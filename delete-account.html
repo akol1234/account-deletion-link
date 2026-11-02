@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delete Account | Agro Diagnosis Tool</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7f4;
+    color: #26352b;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+    background: white;
+    padding: 32px;
+    border-radius: 14px;
+    box-shadow: 0 5px 25px rgba(0,0,0,.07);
+}
+
+.logo {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.description {
+    text-align: center;
+    color: #68756b;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d7dfd8;
+    border-radius: 7px;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 85px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: #248443;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover { background: #196b34; }
+
+.notice {
+    background: #f0f7f1;
+    padding: 14px;
+    border-radius: 7px;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+.success {
+    display: none;
+    background: #e8f5e9;
+    color: #196b34;
+    padding: 15px;
+    border-radius: 7px;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.footer {
+    text-align: center;
+    font-size: 12px;
+    color: #89938b;
+    margin-top: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">🌱</div>
+
+    <h1>Delete Your Account</h1>
+
+    <p class="description">
+        Agro Diagnosis Tool respects your privacy.
+        If you wish to stop using our application,
+        you can submit an account deletion request below.
+    </p>
+
+    <form id="deletionForm">
+
+        <label for="name">Full Name</label>
+        <input type="text" id="name"
+               placeholder="Enter your full name" required>
+
+        <label for="email">Registered Email Address</label>
+        <input type="email" id="email"
+               placeholder="Enter your registered email" required>
+
+        <label for="uid">Firebase User ID (Optional)</label>
+        <input type="text" id="uid"
+               placeholder="Enter your Firebase UID">
+
+        <label for="reason">Reason for Deletion (Optional)</label>
+        <textarea id="reason"
+                  placeholder="Tell us why you want to delete your account"></textarea>
+
+        <button type="submit">Submit Deletion Request</button>
+
+    </form>
+
+    <div class="success" id="success">
+        Your request has been prepared. Please send it to the
+        application administrator for processing.
+    </div>
+
+    <div class="notice">
+        <strong>Important information</strong><br>
+        • Account deletion is permanent.<br>
+        • Associated personal data will be deleted according to our data retention policy.<br>
+        • Some information may be retained where legally required.<br>
+        • Requests will be reviewed and processed within 30 days.
+    </div>
+
+    <div class="footer">
+        © 2026 Agro Diagnosis Tool. All rights reserved.
+    </div>
+
+</div>
+
+<script>
+document.getElementById("deletionForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const uid = document.getElementById("uid").value;
+    const reason = document.getElementById("reason").value;
+
+    const subject = encodeURIComponent("Account Deletion Request");
+    const body = encodeURIComponent(
+        "Account Deletion Request\n\n" +
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n" +
+        "Firebase UID: " + uid + "\n" +
+        "Reason: " + reason
+    );
+
+    // Replace with your application support email.
+    window.location.href =
+        "mailto:joseph.akol555@gmail.com?subject=" +
+        subject + "&body=" + body;
+
+    document.getElementById("success").style.display = "block";
+});
+</script>
+
+</body>
+</html>
